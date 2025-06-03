@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Banco Solidário</string>
+    <string name="titulo_main">Banco Solidário</string>
+
+    <string name="btn_cadastrar">Cadastrar Doação</string>
+    <string name="btn_ver_doacoes">Ver Doações</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_voltar">Voltar</string>
+    <string name="voltar">Voltar</string>
+    <string name="btn_excluir">Excluir</string>
+
+    <string name="excluir_doacao_title">Excluir doação</string>
+    <string name="excluir_doacao_message">Tem certeza que deseja excluir esta doação?</string>
+    <string name="sim">Sim</string>
+    <string name="cancelar">Cancelar</string>
+
+
+    <string name="hint_nome_doador">Nome do Doador</string>
+    <string name="hint_nome_item">Nome do item</string>
+    <string name="hint_descricao">Descrição</string>
+    <string name="hint_quantidade">Quantidade</string>
+
+    <string name="doador_exemplo">Doador: Fulano</string>
+    <string name="item_exemplo">Item: Alimento</string>
+    <string name="descricao_exemplo">Descrição: Pacotes de arroz</string>
+    <string name="quantidade_exemplo">Quantidade: 5</string>
+    <string name="doador_format">Doador: %1$s</string>
+    <string name="item_format">Item: %1$s</string>
+    <string name="descricao_format">Descrição: %1$s</string>
+    <string name="quantidade_format">Quantidade: %1$d</string>
+
+
+</resources>
