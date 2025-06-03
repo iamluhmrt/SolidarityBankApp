@@ -97,4 +97,26 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public boolean atualizarDoacao(Doacao doacao) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues valores = new ContentValues();
+
+        valores.put(COL_NOME_DOADOR, doacao.getNomeDoador());
+        valores.put(COL_NOME_ITEM, doacao.getNomeItem());
+        valores.put(COL_DESCRICAO, doacao.getDescricao());
+        valores.put(COL_QUANTIDADE, doacao.getQuantidade());
+
+        int linhasAfetadas = db.update(
+                TABELA_DOACOES,
+                valores,
+                COL_ID + " = ?",
+                new String[]{String.valueOf(doacao.getId())}
+        );
+
+        db.close();
+        return linhasAfetadas > 0;
+    }
+
+
+
 }

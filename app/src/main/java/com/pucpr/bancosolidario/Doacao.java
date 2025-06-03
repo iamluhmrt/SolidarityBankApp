@@ -1,6 +1,6 @@
 package com.pucpr.bancosolidario;
-
-public class Doacao {
+import java.io.Serializable;
+public class Doacao implements Serializable {
     private int id;
     private String nomeDoador;
     private String nomeItem;

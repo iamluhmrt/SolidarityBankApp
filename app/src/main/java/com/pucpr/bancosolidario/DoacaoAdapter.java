@@ -15,15 +15,17 @@ import java.util.List;
 public class DoacaoAdapter extends RecyclerView.Adapter<DoacaoAdapter.DoacaoViewHolder> {
 
     private final List<Doacao> listaDoacoes;
-    private final OnLongClickListener longClickListener;
+    private final OnItemClickListener itemClickListener;
 
-    public interface OnLongClickListener {
-        void onItemLongClick(Doacao doacao, int position);
+    // Interface para clique curto e longo
+    public interface OnItemClickListener {
+        void onItemClick(Doacao doacao);                     // clique normal (editar)
+        void onItemLongClick(Doacao doacao, int position);   // clique longo (excluir)
     }
 
-    public DoacaoAdapter(List<Doacao> listaDoacoes, OnLongClickListener longClickListener) {
+    public DoacaoAdapter(List<Doacao> listaDoacoes, OnItemClickListener itemClickListener) {
         this.listaDoacoes = listaDoacoes;
-        this.longClickListener = longClickListener;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -44,11 +46,21 @@ public class DoacaoAdapter extends RecyclerView.Adapter<DoacaoAdapter.DoacaoView
         holder.tvDescricao.setText(context.getString(R.string.descricao_format, doacao.getDescricao()));
         holder.tvQuantidade.setText(context.getString(R.string.quantidade_format, doacao.getQuantidade()));
 
-        holder.btnExcluir.setOnClickListener(v -> {
-            if (longClickListener != null) {
-                longClickListener.onItemLongClick(doacao, holder.getAdapterPosition());
+        // Clique normal = editar
+        holder.btnEditar.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(doacao);
             }
         });
+
+        // Clique longo = excluir
+        holder.btnExcluir.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onItemLongClick(doacao, holder.getAdapterPosition());
+            }
+        });
+
+
     }
 
     @Override
@@ -63,7 +75,7 @@ public class DoacaoAdapter extends RecyclerView.Adapter<DoacaoAdapter.DoacaoView
 
     public static class DoacaoViewHolder extends RecyclerView.ViewHolder {
         TextView tvNomeDoador, tvNomeItem, tvDescricao, tvQuantidade;
-        Button btnExcluir;
+        Button btnExcluir, btnEditar;
 
         public DoacaoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +84,7 @@ public class DoacaoAdapter extends RecyclerView.Adapter<DoacaoAdapter.DoacaoView
             tvDescricao = itemView.findViewById(R.id.tvDescricao);
             tvQuantidade = itemView.findViewById(R.id.tvQuantidade);
             btnExcluir = itemView.findViewById(R.id.btnExcluir);
+            btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }
 }

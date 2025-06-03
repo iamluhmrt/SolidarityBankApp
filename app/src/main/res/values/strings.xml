@@ -7,13 +7,19 @@
     <string name="btn_salvar">Salvar</string>
     <string name="btn_voltar">Voltar</string>
     <string name="voltar">Voltar</string>
+    <string name="btn_atualizar">Atualizar</string>
+    <string name="btn_editar">Editar</string>
     <string name="btn_excluir">Excluir</string>
+
+    <string name="preencha_todos_os_campos">Preencha todos os campos!</string>
+    <string name="doacao_atualizada">Doação atualizada com sucesso!</string>
+    <string name="erro_ao_atualizar">Erro ao atualizar doação.</string>
+
 
     <string name="excluir_doacao_title">Excluir doação</string>
     <string name="excluir_doacao_message">Tem certeza que deseja excluir esta doação?</string>
     <string name="sim">Sim</string>
     <string name="cancelar">Cancelar</string>
-
 
     <string name="hint_nome_doador">Nome do Doador</string>
     <string name="hint_nome_item">Nome do item</string>
@@ -28,6 +34,4 @@
     <string name="item_format">Item: %1$s</string>
     <string name="descricao_format">Descrição: %1$s</string>
     <string name="quantidade_format">Quantidade: %1$d</string>
-
-
 </resources>

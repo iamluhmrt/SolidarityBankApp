@@ -1,5 +1,6 @@
 package com.pucpr.bancosolidario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ListaDoacoesActivity extends AppCompatActivity implements DoacaoAdapter.OnLongClickListener {
+public class ListaDoacoesActivity extends AppCompatActivity implements DoacaoAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
     private DoacaoAdapter adapter;
@@ -31,10 +32,11 @@ public class ListaDoacoesActivity extends AppCompatActivity implements DoacaoAda
         dbHelper = new DBHelper(this);
         lista = dbHelper.listarDoacoes();
 
-        adapter = new DoacaoAdapter(lista, this); // this = OnLongClickListener
+        adapter = new DoacaoAdapter(lista, this); // this implementa OnItemClickListener
         recyclerView.setAdapter(adapter);
     }
 
+    // Clique longo: excluir doação
     @Override
     public void onItemLongClick(Doacao doacao, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -46,5 +48,21 @@ public class ListaDoacoesActivity extends AppCompatActivity implements DoacaoAda
         });
         builder.setNegativeButton(getString(R.string.cancelar), null);
         builder.show();
+    }
+
+    // Clique curto: editar doação
+    @Override
+    public void onItemClick(Doacao doacao) {
+        Intent intent = new Intent(ListaDoacoesActivity.this, EditarDoacaoActivity.class);
+        intent.putExtra("doacao", doacao);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lista.clear();
+        lista.addAll(dbHelper.listarDoacoes());
+        adapter.notifyDataSetChanged();
     }
 }
